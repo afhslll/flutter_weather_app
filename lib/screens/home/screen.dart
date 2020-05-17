@@ -26,18 +26,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  void didChangeDependencies() {
+  void didChangeDependencies() async {
     if (_isInit) {
-      final cities = Provider.of<Cities>(context);
-      cities.addDefaultCities();
-      final latitude = cities.defaultCity.latitude;
-      final longitude = cities.defaultCity.longitude;
-      Provider.of<CurrentWeather>(context)
-          .fetchAndSetCurrentWeather(latitude, longitude)
-          .then((_) {});
-      Provider.of<Forecast>(context)
-          .fetchAndSetForecast(latitude, longitude)
-          .then((_) {});
+      final citiesProvider = Provider.of<Cities>(context, listen: false);
+      await citiesProvider.fetchAndSetAddedCities();
+      final latitude = citiesProvider.defaultCity.latitude;
+      final longitude = citiesProvider.defaultCity.longitude;
+      Provider.of<CurrentWeather>(context, listen: false)
+          .fetchAndSetCurrentWeather(latitude, longitude);
+      Provider.of<Forecast>(context, listen: false)
+          .fetchAndSetForecast(latitude, longitude);
     }
     _isInit = false;
     super.didChangeDependencies();

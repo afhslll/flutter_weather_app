@@ -27,9 +27,8 @@ class CarouselListWidget extends StatelessWidget {
           onPageChanged: (index, reason) {
             onSelectCity(index);
           }),
-      items: cities.addedCities.values
-          .map((e) => CarouselItemWidget(city: e))
-          .toList(),
+      items:
+          cities.addedCities.map((e) => CarouselItemWidget(city: e)).toList(),
     ));
   }
 }

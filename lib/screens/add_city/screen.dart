@@ -25,8 +25,10 @@ class _AddCityScreen extends State<AddCityScreen> {
   void didChangeDependencies() {
     if (_isInit) {
       final cities = Provider.of<Cities>(context);
-      sampleCities
-          .removeWhere((city) => cities.addedCities.containsKey(city['city']));
+      sampleCities.removeWhere((city) => ((cities.addedCities.singleWhere(
+              (ct) => ct.name == city['city'],
+              orElse: () => null)) !=
+          null));
     }
     _isInit = false;
     super.didChangeDependencies();
