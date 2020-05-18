@@ -11,7 +11,8 @@ class TabItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: onChangeTab,
-        child: Padding(
+        child: Container(
+            color: Colors.transparent,
             padding: EdgeInsets.all(8),
             child: Column(children: <Widget>[
               Row(

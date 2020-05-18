@@ -16,7 +16,7 @@ class WeatherItemWidget extends StatelessWidget {
     return Container(
         width: 64.0,
         margin: EdgeInsets.fromLTRB(
-            isFirst ? 16.0 : 6.0, 6.0, 6.0, isLast ? 16.0 : 6.0),
+            isFirst ? 16.0 : 6.0, 6.0, isLast ? 16.0 : 6.0, 6.0),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[

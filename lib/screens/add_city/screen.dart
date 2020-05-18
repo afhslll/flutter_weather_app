@@ -75,12 +75,16 @@ class _AddCityScreenState extends State<AddCityScreen> {
   @override
   void didChangeDependencies() {
     if (_isInit) {
+      var sc = [...sampleCities];
       final cities = Provider.of<Cities>(context);
-      sampleCities.removeWhere((city) => ((cities.addedCities.singleWhere(
+      sc.removeWhere((city) => ((cities.addedCities.singleWhere(
               (ct) => ct.name == city['city'],
               orElse: () => null)) !=
           null));
-      sampleCities.insert(0, {'city': 'Current Location'});
+      sc.insert(0, {'city': 'Current Location'});
+      setState(() {
+        sampleCities = sc;
+      });
     }
     _isInit = false;
     super.didChangeDependencies();
