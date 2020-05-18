@@ -24,7 +24,7 @@ class _AddCityScreenState extends State<AddCityScreen> {
   bool _serviceEnabled;
   PermissionStatus _permissionGranted;
 
-  Future<void> _getCurrentUserLocation(BuildContext context) async {
+  Future<void> _addCityCurrentLocation(BuildContext context) async {
     try {
       _serviceEnabled = await location.serviceEnabled();
       if (!_serviceEnabled) {
@@ -50,7 +50,7 @@ class _AddCityScreenState extends State<AddCityScreen> {
             await Provider.of<CurrentWeather>(context, listen: false)
                 .fetchCurrentLocationName(lat, lng);
         Provider.of<Cities>(context, listen: false)
-            .addCity(currentCity, '', lat, lng);
+            .addCity(currentCity, '', lat, lng, true);
         Navigator.of(context).pop();
       }
     } catch (error) {
@@ -59,11 +59,11 @@ class _AddCityScreenState extends State<AddCityScreen> {
     }
   }
 
-  Future<void> _addCity(BuildContext context, dynamic sampleCity) async {
+  Future<void> _addCityManual(BuildContext context, dynamic sampleCity) async {
     var lat = double.parse(sampleCity['lat']);
     var lng = double.parse(sampleCity['lng']);
     Provider.of<Cities>(context, listen: false)
-        .addCity(sampleCity['city'], sampleCity['admin'], lat, lng);
+        .addCity(sampleCity['city'], sampleCity['admin'], lat, lng, false);
     Navigator.of(context).pop();
   }
 
@@ -96,12 +96,12 @@ class _AddCityScreenState extends State<AddCityScreen> {
         itemCount: sampleCities.length,
         itemBuilder: (ctx, i) => i == 0
             ? CurLocWidget(
-                onSelect: () => _getCurrentUserLocation(context),
+                onSelect: () => _addCityCurrentLocation(context),
               )
             : CityItemWidget(
                 title: sampleCities[i]['city'],
                 subtitle: sampleCities[i]['admin'],
-                onSelect: () => _addCity(context, sampleCities[i]),
+                onSelect: () => _addCityManual(context, sampleCities[i]),
               ),
       ),
     );

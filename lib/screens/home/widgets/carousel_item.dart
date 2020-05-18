@@ -49,14 +49,35 @@ class CarouselItemWidget extends StatelessWidget {
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                            Text(
-                              city.name,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            city.isGps
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.gps_fixed,
+                                        size: 24.0,
+                                      ),
+                                      SizedBox(
+                                        width: 10.0,
+                                      ),
+                                      Text(
+                                        city.name,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 24.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                : Text(
+                                    city.name,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                             SizedBox(
                               height: 8,
                             ),

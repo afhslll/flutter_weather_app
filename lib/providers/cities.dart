@@ -1,19 +1,21 @@
 import 'package:flutter/foundation.dart';
 
 import '../data/sample_cities.dart';
-import '../helpers/db_helper.dart';
+import '../helpers/database.dart';
 
 class City {
   final String name;
   final String state;
   final double latitude;
   final double longitude;
+  final bool isGps;
 
   City(
       {@required this.name,
       @required this.state,
       @required this.latitude,
-      @required this.longitude});
+      @required this.longitude,
+      @required this.isGps});
 }
 
 class Cities with ChangeNotifier {
@@ -28,16 +30,22 @@ class Cities with ChangeNotifier {
     return _defaultCity;
   }
 
-  void addCity(String name, String state, double latitude, double longitude) {
+  void addCity(String name, String state, double latitude, double longitude,
+      bool isGps) {
     City cityToAdd = City(
-        name: name, state: state, latitude: latitude, longitude: longitude);
+        name: name,
+        state: state,
+        latitude: latitude,
+        longitude: longitude,
+        isGps: isGps);
     _addedCities.add(cityToAdd);
     notifyListeners();
     DBHelper.insert('user_cities', {
       'name': name,
       'state': state,
       'latitude': latitude,
-      'longitude': longitude
+      'longitude': longitude,
+      'is_gps': isGps ? 1 : 0
     });
   }
 
@@ -48,7 +56,8 @@ class Cities with ChangeNotifier {
           name: city['city'],
           state: city['admin'],
           latitude: double.parse(city['lat']),
-          longitude: double.parse(city['lng']));
+          longitude: double.parse(city['lng']),
+          isGps: false);
       _addedCities.add(cityToAdd);
       if (city['city'] == 'Kuala Lumpur') {
         setDefaultCity(cityToAdd);
@@ -57,7 +66,8 @@ class Cities with ChangeNotifier {
         'name': city['city'],
         'state': city['admin'],
         'latitude': double.parse(city['lat']),
-        'longitude': double.parse(city['lng'])
+        'longitude': double.parse(city['lng']),
+        'is_gps': 0
       });
     });
     notifyListeners();
@@ -79,7 +89,8 @@ class Cities with ChangeNotifier {
             name: item['name'],
             state: item['state'],
             latitude: item['latitude'],
-            longitude: item['longitude']);
+            longitude: item['longitude'],
+            isGps: item['is_gps'] == 1);
         _addedCities.add(cityToAdd);
         if (item['name'] == 'Kuala Lumpur') {
           setDefaultCity(cityToAdd);

@@ -19,7 +19,16 @@ class CityItemWidget extends StatelessWidget {
             height: 100.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              color: Color(0xFFFCBF49),
+              // boxShadow: [
+              //   BoxShadow(
+              //       color: Colors.black.withOpacity(0.15),
+              //       blurRadius: 10.0,
+              //       offset: Offset(0.0, 5.0))
+              // ],
+              image: DecorationImage(
+                image: AssetImage("assets/images/box_city.jpg"),
+                fit: BoxFit.cover,
+              ),
             ),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
