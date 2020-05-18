@@ -24,6 +24,26 @@ class _AddCityScreenState extends State<AddCityScreen> {
   bool _serviceEnabled;
   PermissionStatus _permissionGranted;
 
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Success!"),
+          content: Text("New city has been successfully added."),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> _addCityCurrentLocation(BuildContext context) async {
     try {
       _serviceEnabled = await location.serviceEnabled();
@@ -52,6 +72,7 @@ class _AddCityScreenState extends State<AddCityScreen> {
         Provider.of<Cities>(context, listen: false)
             .addCity(currentCity, '', lat, lng, true);
         Navigator.of(context).pop();
+        _showDialog();
       }
     } catch (error) {
       print('location ERROR: $error');
@@ -65,6 +86,7 @@ class _AddCityScreenState extends State<AddCityScreen> {
     Provider.of<Cities>(context, listen: false)
         .addCity(sampleCity['city'], sampleCity['admin'], lat, lng, false);
     Navigator.of(context).pop();
+    _showDialog();
   }
 
   @override
