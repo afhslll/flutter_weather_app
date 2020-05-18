@@ -28,12 +28,10 @@ class Cities with ChangeNotifier {
     return _defaultCity;
   }
 
-  void addCity(String cityId, String name, String state, double latitude,
-      double longitude) {
+  void addCity(String name, String state, double latitude, double longitude) {
     City cityToAdd = City(
         name: name, state: state, latitude: latitude, longitude: longitude);
     _addedCities.add(cityToAdd);
-    setDefaultCity(cityToAdd);
     notifyListeners();
     DBHelper.insert('user_cities', {
       'name': name,

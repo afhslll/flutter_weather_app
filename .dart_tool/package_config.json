@@ -74,6 +74,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///Users/afifahsalimi/Flutter/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/afifahsalimi/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.1",
       "packageUri": "lib/",
@@ -96,6 +102,30 @@
       "rootUri": "file:///Users/afifahsalimi/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1",
       "packageUri": "lib/",
       "languageVersion": "2.5"
+    },
+    {
+      "name": "js",
+      "rootUri": "file:///Users/afifahsalimi/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "1.19"
+    },
+    {
+      "name": "location",
+      "rootUri": "file:///Users/afifahsalimi/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/location-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "location_platform_interface",
+      "rootUri": "file:///Users/afifahsalimi/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/location_platform_interface-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
+    },
+    {
+      "name": "location_web",
+      "rootUri": "file:///Users/afifahsalimi/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/location_web-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "matcher",
@@ -132,6 +162,12 @@
       "rootUri": "file:///Users/afifahsalimi/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.4"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/afifahsalimi/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "provider",
@@ -230,7 +266,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-05-17T07:38:24.767434Z",
+  "generated": "2020-05-17T15:08:18.265318Z",
   "generator": "pub",
   "generatorVersion": "2.8.2"
 }

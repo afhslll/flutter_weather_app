@@ -33,8 +33,6 @@ class CityListWidget extends StatelessWidget {
                   Provider.of<Forecast>(context, listen: false)
                       .fetchAndSetForecast(
                           selectedCity.latitude, selectedCity.longitude);
-                  Provider.of<Cities>(context, listen: false)
-                      .setDefaultCity(selectedCity);
                 },
               ),
       ),

@@ -49,4 +49,15 @@ class CurrentWeather with ChangeNotifier {
         humidity: extractedData['main']['humidity'].toDouble());
     notifyListeners();
   }
+
+  Future<String> fetchCurrentLocationName(double lat, double lng) async {
+    final url =
+        'https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lng&appid=8431c1af723ec74b5e15ecf8656b25dc';
+    final response = await http.get(url);
+    final extractedData = json.decode(response.body);
+    if (extractedData == null) {
+      return '';
+    }
+    return extractedData['name'];
+  }
 }
