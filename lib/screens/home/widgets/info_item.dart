@@ -9,8 +9,26 @@ class InfoItemWidget extends StatelessWidget {
       {@required this.title, @required this.icon, @required this.value});
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return Expanded(
+        flex: 1,
         child: Container(
-            child: Column(children: <Widget>[icon, Text(title), Text(value)])));
+            margin: EdgeInsets.all(6.0),
+            padding: EdgeInsets.symmetric(vertical: 8),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                color: Colors.white),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  icon,
+                  Text(
+                    title,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    value,
+                    style: TextStyle(color: Colors.grey[600]),
+                  )
+                ])));
   }
 }

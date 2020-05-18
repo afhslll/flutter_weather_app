@@ -7,10 +7,10 @@ class TabListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.pink,
         width: double.infinity,
         child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               TabItemWidget(
                 title: "Today",

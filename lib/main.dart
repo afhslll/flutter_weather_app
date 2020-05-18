@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider.value(value: Forecast()),
         ],
         child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: Colors.blue,
               visualDensity: VisualDensity.adaptivePlatformDensity,

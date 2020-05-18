@@ -43,29 +43,50 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var scaffold = Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.add),
               onPressed: () {
                 Navigator.of(context).pushNamed(AddCityScreen.routeName);
               },
+              iconSize: 40.0,
             ),
           ],
         ),
-        body: Column(
-          children: <Widget>[
-            CityListWidget(),
-            InfoListWidget(),
-            TabListWidget(),
-            Consumer<Forecast>(
-              builder: (ctx, forecastData, child) =>
-                  forecastData.forecast.isEmpty
-                      ? Container()
-                      : WeatherListWidget(forecastData.forecast.values.first),
-            )
-          ],
-        ));
+        body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/background.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: SafeArea(
+                top: false,
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 90,
+                    ),
+                    CityListWidget(),
+                    InfoListWidget(),
+                    TabListWidget(),
+                    Consumer<Forecast>(
+                      builder: (ctx, forecastData, child) =>
+                          forecastData.forecast.isEmpty
+                              ? Container()
+                              : WeatherListWidget(
+                                  forecastData.forecast.values.first),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    )
+                  ],
+                ))));
+    return scaffold;
   }
 }

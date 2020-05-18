@@ -9,12 +9,9 @@ import '../../../providers/forecast.dart';
 class CityListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-
-    return Container(
+    return Expanded(
+        child: Container(
       width: double.infinity,
-      height: screenSize.height / 2,
-      color: Colors.redAccent,
       child: Consumer<Cities>(
         builder: (ctx, citiesData, child) => citiesData.addedCities.isEmpty
             ? Container()
@@ -36,6 +33,6 @@ class CityListWidget extends StatelessWidget {
                 },
               ),
       ),
-    );
+    ));
   }
 }

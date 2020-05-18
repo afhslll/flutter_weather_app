@@ -14,8 +14,34 @@ class TabItemWidget extends StatelessWidget {
         child: Padding(
             padding: EdgeInsets.all(8),
             child: Column(children: <Widget>[
-              Text(title),
-              isFocus ? Icon(Icons.fiber_manual_record) : Container()
+              Row(
+                children: <Widget>[
+                  Text(
+                    title,
+                    style: TextStyle(
+                        fontWeight:
+                            isFocus ? FontWeight.bold : FontWeight.normal,
+                        fontSize: 16.0),
+                  ),
+                  !isFocus
+                      ? SizedBox(
+                          width: 8.0,
+                        )
+                      : Container(),
+                  !isFocus
+                      ? Icon(
+                          Icons.trending_flat,
+                          size: 20,
+                        )
+                      : Container()
+                ],
+              ),
+              isFocus
+                  ? Icon(
+                      Icons.fiber_manual_record,
+                      size: 12,
+                    )
+                  : Container()
             ])));
   }
 }

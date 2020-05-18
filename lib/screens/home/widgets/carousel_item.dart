@@ -24,70 +24,74 @@ class CarouselItemWidget extends StatelessWidget {
               .toString();
     }
     return Container(
-      color: Colors.blue,
-      margin: EdgeInsets.all(5.0),
-      child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-          child: Stack(
-            children: <Widget>[
-              // Image.network(item, fit: BoxFit.cover, width: 1000.0),
-              Positioned(
-                top: 0.0,
-                bottom: 0.0,
-                left: 0.0,
-                right: 0.0,
-                child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Color.fromARGB(200, 0, 0, 0),
-                          Color.fromARGB(0, 0, 0, 0)
-                        ],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                      ),
-                    ),
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                    child: Column(children: <Widget>[
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.15),
+              blurRadius: 15.0,
+              offset: Offset(0.0, 5.0))
+        ],
+      ),
+      margin: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 20.0),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            top: 0.0,
+            bottom: 0.0,
+            left: 0.0,
+            right: 0.0,
+            child: Container(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
                       Text(
                         city.name,
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
+                          color: Colors.black,
+                          fontSize: 24.0,
                           fontWeight: FontWeight.bold,
                         ),
+                      ),
+                      SizedBox(
+                        height: 8,
                       ),
                       dayDate == ''
                           ? Container()
                           : Text(
                               dayDate,
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize: 16.0,
                               ),
                             ),
+                      SizedBox(
+                        height: 12,
+                      ),
                       Text(
-                        '${weatherInfo.currentWeather?.temperature.toString()}°',
+                        '${weatherInfo.currentWeather?.temperature?.toStringAsFixed(0)}°',
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
+                          color: Colors.black,
+                          fontSize: 74.0,
                           fontWeight: FontWeight.bold,
                         ),
+                      ),
+                      SizedBox(
+                        height: 12,
                       ),
                       Text(
                         weatherInfo.currentWeather?.description.toString(),
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 16.0,
                         ),
                       ),
                     ])),
-              ),
-            ],
-          )),
+          ),
+        ],
+      ),
     );
   }
 }

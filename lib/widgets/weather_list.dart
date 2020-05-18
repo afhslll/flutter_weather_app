@@ -11,8 +11,8 @@ class WeatherListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 100,
-        color: Colors.purple,
+        height: 110.0,
+        padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: weathers.length,
