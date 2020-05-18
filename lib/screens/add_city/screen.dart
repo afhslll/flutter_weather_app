@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:location/location.dart';
 
 import './widgets/city_item.dart';
+import './widgets/curloc_item.dart';
 import '../../data/sample_cities.dart';
 import '../../providers/cities.dart';
 import '../../providers/weather.dart';
@@ -94,9 +95,7 @@ class _AddCityScreenState extends State<AddCityScreen> {
       body: ListView.builder(
         itemCount: sampleCities.length,
         itemBuilder: (ctx, i) => i == 0
-            ? CityItemWidget(
-                title: sampleCities[i]['city'],
-                subtitle: '',
+            ? CurLocWidget(
                 onSelect: () => _getCurrentUserLocation(context),
               )
             : CityItemWidget(

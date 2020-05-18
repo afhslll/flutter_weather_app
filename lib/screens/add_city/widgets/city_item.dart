@@ -13,10 +13,30 @@ class CityItemWidget extends StatelessWidget {
     return GestureDetector(
         onTap: onSelect,
         child: Container(
-            margin: EdgeInsets.all(8),
+            margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            padding: EdgeInsets.all(17.0),
             width: double.infinity,
-            height: 80,
-            color: Colors.teal,
-            child: Column(children: <Widget>[Text(title), Text(subtitle)])));
+            height: 100.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              color: Color(0xFFFCBF49),
+            ),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                      )),
+                  SizedBox(
+                    height: 5.0,
+                  ),
+                  Text(
+                    subtitle,
+                    style: TextStyle(fontSize: 16.0),
+                  )
+                ])));
   }
 }

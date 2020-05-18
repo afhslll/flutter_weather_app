@@ -15,7 +15,7 @@ class InfoListWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(14.0)),
                 color: Color(0xFFFCBF49)),
-            margin: EdgeInsets.all(16.0),
+            margin: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
             padding: EdgeInsets.all(8.0),
             width: double.infinity,
             height: 120,

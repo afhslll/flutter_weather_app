@@ -4,16 +4,19 @@ import 'package:intl/intl.dart';
 import '../providers/weather.dart';
 
 class WeatherItemWidget extends StatelessWidget {
+  final bool isFirst;
+  final bool isLast;
   final Weather weather;
 
-  WeatherItemWidget(this.weather);
+  WeatherItemWidget(
+      {@required this.isFirst, @required this.isLast, @required this.weather});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         width: 64.0,
-        margin: EdgeInsets.all(6.0),
-        padding: EdgeInsets.symmetric(vertical: 8),
+        margin: EdgeInsets.fromLTRB(
+            isFirst ? 16.0 : 6.0, 6.0, 6.0, isLast ? 16.0 : 6.0),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[

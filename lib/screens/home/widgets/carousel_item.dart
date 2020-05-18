@@ -30,11 +30,11 @@ class CarouselItemWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
               color: Colors.black.withOpacity(0.15),
-              blurRadius: 15.0,
+              blurRadius: 10.0,
               offset: Offset(0.0, 5.0))
         ],
       ),
-      margin: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 20.0),
+      margin: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 10.0),
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -43,52 +43,55 @@ class CarouselItemWidget extends StatelessWidget {
             left: 0.0,
             right: 0.0,
             child: Container(
-                padding: EdgeInsets.all(20.0),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        city.name,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      dayDate == ''
-                          ? Container()
-                          : Text(
-                              dayDate,
+                padding: EdgeInsets.all(12.0),
+                child: weatherInfo.currentWeather == null
+                    ? Container()
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                            Text(
+                              city.name,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 24.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            dayDate == ''
+                                ? Container()
+                                : Text(
+                                    dayDate,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              '${weatherInfo.currentWeather?.temperature?.toStringAsFixed(0)}°',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 70.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              weatherInfo.currentWeather?.description
+                                  .toString(),
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16.0,
                               ),
                             ),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Text(
-                        '${weatherInfo.currentWeather?.temperature?.toStringAsFixed(0)}°',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 74.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Text(
-                        weatherInfo.currentWeather?.description.toString(),
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ])),
+                          ])),
           ),
         ],
       ),

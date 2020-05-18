@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Navigator.of(context).pushNamed(AddCityScreen.routeName);
               },
-              iconSize: 40.0,
+              iconSize: 30.0,
             ),
           ],
         ),
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: 90,
+                      height: 80,
                     ),
                     CityListWidget(),
                     InfoListWidget(),
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   forecastData.forecast.values.first),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     )
                   ],
                 ))));

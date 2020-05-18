@@ -19,6 +19,7 @@ class WeatherDetailScreen extends StatelessWidget {
                 : ListView.builder(
                     itemCount: forecastData.forecast.length - 1,
                     itemBuilder: (ctx, i) => DayItemWidget(
+                          isFocus: i == 0 ? true : false,
                           day: forecastData.forecast.keys
                               .elementAt(i + 1)
                               .toString(),

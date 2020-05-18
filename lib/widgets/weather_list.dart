@@ -12,10 +12,13 @@ class WeatherListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 110.0,
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: weathers.length,
-            itemBuilder: (ctx, i) => WeatherItemWidget(weathers[i])));
+            itemBuilder: (ctx, i) => WeatherItemWidget(
+                  isFirst: i == 0,
+                  isLast: (i + 1) == weathers.length,
+                  weather: weathers[i],
+                )));
   }
 }

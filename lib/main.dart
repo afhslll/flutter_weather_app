@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              appBarTheme: AppBarTheme(color: Color(0xFF003049)),
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
             home: HomeScreen(),
