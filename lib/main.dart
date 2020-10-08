@@ -1,40 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_weather_app/ui/view/splash/splash_screen.dart';
-import 'core/service/localization/localization_service.dart';
-import 'core/constant/strings_constant.dart';
-import 'core/router/router.dart';
-import 'ui/shared/style/theme_data.dart';
+import 'package:provider/provider.dart';
 
-class WeatherApp extends StatefulWidget {
-  @override
-  _WeatherAppState createState() => _WeatherAppState();
-}
+import './screens/home/screen.dart';
+import './screens/add_city/screen.dart';
+import './screens/weather_detail/screen.dart';
+import './providers/cities.dart';
+import './providers/weather.dart';
+import './providers/forecast.dart';
 
-class _WeatherAppState extends State<WeatherApp> {
-  @override
-  void initState() {
-    super.initState();
-    localizationService.onLocaleChangedCallback = _onLocaleChanged();
-  }
+void main() => runApp(MyApp());
 
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: ConstantStrings.appName,
-      onGenerateRoute: Router.generateRoute,
-      home: SplashScreen(),
-      theme: defaultThemeData,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: localizationService.supportedLocales(),
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(value: Cities()),
+          ChangeNotifierProvider.value(value: CurrentWeather()),
+          ChangeNotifierProvider.value(value: Forecast()),
+        ],
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              appBarTheme: AppBarTheme(color: Color(0xFF003049)),
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+            ),
+            home: HomeScreen(),
+            routes: {
+              AddCityScreen.routeName: (ctx) => AddCityScreen(),
+              WeatherDetailScreen.routeName: (ctx) => WeatherDetailScreen(),
+            }));
   }
-
-  dynamic _onLocaleChanged() => print(
-      'Language has been changed to: ${localizationService.currentLanguage}');
 }
