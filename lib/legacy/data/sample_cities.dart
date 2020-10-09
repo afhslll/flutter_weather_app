@@ -1,5 +1,7 @@
-const SAMPLE_CITIES = const [
-  {
+// ignore_for_file: avoid_classes_with_only_static_members,constant_identifier_names,prefer_single_quotes
+class MockJsonProvider {
+  static const mock_cities_json = """[
+  {    
     "city": "George Town",
     "admin": "Pulau Pinang",
     "country": "Malaysia",
@@ -439,4 +441,5 @@ const SAMPLE_CITIES = const [
     "lng": "102.231766",
     "population": ""
   }
-];
+]""";
+}
