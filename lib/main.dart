@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_app/core/constant/strings_constant.dart';
+import 'package:flutter_weather_app/core/constant/string_constant.dart';
 import 'package:flutter_weather_app/core/router/router.dart';
 import 'package:flutter_weather_app/core/service/locator/locator.dart';
 import 'package:flutter_weather_app/core/service/navigator/navigation_service.dart';
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: defaultThemeData,
-      title: ConstantStrings.appName,
+      title: ConstantString.appName,
       onGenerateRoute: NavigationRouter.generateRoute,
       navigatorKey: locator<NavigationService>().navigationKey,
       home: SplashScreen(),
