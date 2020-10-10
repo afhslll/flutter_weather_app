@@ -19,6 +19,11 @@ class Weather {
       this.wind,
       this.humidity,
       this.icon});
+
+  @override
+  String toString() {
+    return 'Weather{dateTime: $dateTime, temperature: $temperature, description: $description, sunrise: $sunrise, sunset: $sunset, wind: $wind, humidity: $humidity, icon: $icon}';
+  }
 }
 
 class WeatherResponse {
@@ -28,7 +33,7 @@ class WeatherResponse {
   WeatherResponse.fromJson(Map<String, dynamic> json) {
     weather = Weather(
       dateTime: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000),
-      temperature: json['main']['temp'],
+      temperature: json['main']['temp'].toDouble(),
       description: json['weather'][0]['main'],
       sunrise:
           DateTime.fromMillisecondsSinceEpoch(json['sys']['sunrise'] * 1000),

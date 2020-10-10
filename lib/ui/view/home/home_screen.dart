@@ -14,7 +14,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<HomeViewModel>(
-      onModelReady: (viewModel) {},
+      onModelReady: (viewModel) {
+        viewModel.setupPage();
+      },
       builder: (context, viewModel, child) => Scaffold(
           extendBodyBehindAppBar: true,
           appBar: AppBar(
@@ -44,7 +46,9 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(
                         height: 80,
                       ),
-                      CityList(),
+                      CityList(
+                        homeViewModel: viewModel,
+                      ),
                       InfoList(),
                       TabList(
                         onTap: () {

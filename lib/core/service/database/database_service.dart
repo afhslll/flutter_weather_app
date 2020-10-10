@@ -7,11 +7,12 @@ import 'package:flutter_weather_app/core/model/city.dart';
 import 'package:flutter/material.dart';
 
 class DatabaseService {
-  Database _database;
-
+  static Database _database;
   Future<Database> get database async {
     if (_database != null) return _database;
-    return await _initDatabase();
+    // ignore: join_return_with_assignment
+    _database = await _initDatabase();
+    return _database;
   }
 
   Future<Database> _initDatabase() async {

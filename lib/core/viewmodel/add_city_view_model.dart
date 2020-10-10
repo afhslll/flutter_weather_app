@@ -9,15 +9,6 @@ class AddCityViewModel extends BaseModel {
   List<City> _availableCities = [];
   List<City> get availableCities => _availableCities;
 
-  ViewState _viewState = ViewState.idle;
-  ViewState get viewState => _viewState;
-  void setViewState(ViewState value) {
-    if (_viewState != value) {
-      _viewState = value;
-      notifyListeners();
-    }
-  }
-
   Future<void> getAvailableCities() async {
     setViewState(ViewState.busy);
     _availableCities = await _service.fetchMockCities();

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/core/model/weather.dart';
+import 'package:flutter_weather_app/core/viewmodel/home_view_model.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'info_item.dart';
 
 class InfoList extends StatelessWidget {
@@ -12,39 +16,49 @@ class InfoList extends StatelessWidget {
         padding: EdgeInsets.all(8.0),
         width: double.infinity,
         height: 120,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            InfoItem(
-                title: 'Sunrise',
-                icon: Icon(
-                  Icons.brightness_low,
-                  color: Color(0xFFEC6E4C),
-                ),
-                value: '11'),
-            InfoItem(
-                title: 'Sunset',
-                icon: Icon(
-                  Icons.brightness_medium,
-                  color: Color(0xFFEC6E4C),
-                ),
-                value: '11'),
-            InfoItem(
-                title: 'Humidity',
-                icon: Icon(
-                  Icons.opacity,
-                  color: Color(0xFFEC6E4C),
-                ),
-                value: '11%'),
-            InfoItem(
-                title: 'Wind',
-                icon: Icon(
-                  Icons.cloud_queue,
-                  color: Color(0xFFEC6E4C),
-                ),
-                value: '11 m/s'),
-          ],
+        child: Selector<HomeViewModel, Weather>(
+          selector: (context, viewModel) => viewModel.currentWeather,
+          builder: (context, weather, child) => Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              InfoItem(
+                  title: 'Sunrise',
+                  icon: Icon(
+                    Icons.brightness_low,
+                    color: Color(0xFFEC6E4C),
+                  ),
+                  value: _formatTime(weather?.sunrise)),
+              InfoItem(
+                  title: 'Sunset',
+                  icon: Icon(
+                    Icons.brightness_medium,
+                    color: Color(0xFFEC6E4C),
+                  ),
+                  value: _formatTime(weather?.sunset)),
+              InfoItem(
+                  title: 'Humidity',
+                  icon: Icon(
+                    Icons.opacity,
+                    color: Color(0xFFEC6E4C),
+                  ),
+                  value: '${weather?.humidity?.toString() ?? ''} %'),
+              InfoItem(
+                  title: 'Wind',
+                  icon: Icon(
+                    Icons.cloud_queue,
+                    color: Color(0xFFEC6E4C),
+                  ),
+                  value: '${weather?.wind?.toString() ?? ''} m/s'),
+            ],
+          ),
         ));
+  }
+
+  String _formatTime(DateTime dt) {
+    if (dt != null) {
+      return DateFormat('Hm').format(dt).toString();
+    }
+    return '';
   }
 }

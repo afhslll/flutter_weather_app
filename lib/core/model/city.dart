@@ -34,7 +34,7 @@ class City {
   }
 
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map;
+    final Map<String, dynamic> map = {};
     if (id != null) {
       map[colId] = id;
     }
@@ -43,5 +43,10 @@ class City {
     map[colLatitude] = latitude;
     map[colLongitude] = longitude;
     return map;
+  }
+
+  @override
+  String toString() {
+    return 'City{id: $id, name: $name, state: $state, latitude: $latitude, longitude: $longitude}';
   }
 }
