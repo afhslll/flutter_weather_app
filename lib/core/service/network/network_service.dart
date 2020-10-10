@@ -1,3 +1,4 @@
+import 'package:flutter_weather_app/core/model/forecast.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter_weather_app/core/service/locator/locator.dart';
 import 'package:flutter_weather_app/core/constant/url_constant.dart';

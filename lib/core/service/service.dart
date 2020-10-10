@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_weather_app/core/data/mock_json_data.dart';
 import 'package:flutter_weather_app/core/model/city.dart';
+import 'package:flutter_weather_app/core/model/forecast.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/core/service/database/database_service.dart';

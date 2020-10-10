@@ -19,7 +19,9 @@ class NavigationRouter {
       case addCityRoute:
         return _pageRoute(AddCityScreen());
       case weatherDetailRoute:
-        return _pageRoute(WeatherDetailScreen());
+        return _pageRoute(WeatherDetailScreen(
+          arguments: settings.arguments,
+        ));
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

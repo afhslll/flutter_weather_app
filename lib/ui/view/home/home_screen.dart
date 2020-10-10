@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/core/argument/weather_detail_argument.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter_weather_app/core/router/router.dart';
 import 'package:flutter_weather_app/core/service/locator/locator.dart';
@@ -54,8 +55,11 @@ class HomeScreen extends StatelessWidget {
                       InfoList(),
                       TabList(
                         onTap: () {
-                          _navigationService
-                              .navigateTo(NavigationRouter.weatherDetailRoute);
+                          _navigationService.navigateTo(
+                            NavigationRouter.weatherDetailRoute,
+                            arguments: WeatherDetailArgument(
+                                dayForecast: viewModel.dayForecast),
+                          );
                         },
                       ),
                       Selector<HomeViewModel, List<Weather>>(

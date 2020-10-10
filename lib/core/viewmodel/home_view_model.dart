@@ -1,11 +1,13 @@
 import 'package:flutter_weather_app/core/constant/string_constant.dart';
 import 'package:flutter_weather_app/core/enum/view_state.dart';
 import 'package:flutter_weather_app/core/model/city.dart';
+import 'package:flutter_weather_app/core/model/forecast.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter_weather_app/core/service/locator/locator.dart';
 import 'package:flutter_weather_app/core/service/service.dart';
 import 'package:flutter_weather_app/core/utils/utils.dart';
-
+import 'package:collection/collection.dart';
+import 'package:intl/intl.dart';
 import 'base_model.dart';
 
 class HomeViewModel extends BaseModel {
@@ -34,6 +36,9 @@ class HomeViewModel extends BaseModel {
 
   ForecastResponse _forecastResponse;
   ForecastResponse get forecastResponse => _forecastResponse;
+
+  Map<String, List<Weather>> _dayForecast;
+  Map<String, List<Weather>> get dayForecast => _dayForecast;
 
   Future<void> setupPage() async {
     await getUserCities();
@@ -65,6 +70,8 @@ class HomeViewModel extends BaseModel {
           .where((element) =>
               isSameDay(element.dateTime, _currentWeather.dateTime))
           .toList();
+      _dayForecast = groupBy(_forecastResponse.weathers,
+          (w) => DateFormat('EEEE').format(w.dateTime));
       setViewState(ViewState.idle);
     } catch (e) {
       print(e.toString());
