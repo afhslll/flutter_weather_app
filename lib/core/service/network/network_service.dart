@@ -13,6 +13,7 @@ abstract class NetworkService {
 
 class NetworkServiceImpl implements NetworkService {
   final APIRequest _api = locator<APIRequest>();
+  final String forecastData = 'list';
 
   @override
   Future<WeatherResponse> getCurrentWeather({double lat, double lng}) async {
@@ -23,6 +24,6 @@ class NetworkServiceImpl implements NetworkService {
   @override
   Future<ForecastResponse> getForecast({double lat, double lng}) async {
     final result = await _api.get(ConstantUrl.getForecastUrl(lat, lng));
-    return ForecastResponse.fromJson(result);
+    return ForecastResponse.fromJson(result[forecastData]);
   }
 }

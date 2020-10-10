@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
+import 'package:flutter_weather_app/core/utils/utils.dart';
 import 'package:flutter_weather_app/core/viewmodel/home_view_model.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'info_item.dart';
 
@@ -28,14 +28,14 @@ class InfoList extends StatelessWidget {
                     Icons.brightness_low,
                     color: Color(0xFFEC6E4C),
                   ),
-                  value: _formatTime(weather?.sunrise)),
+                  value: formatTime(weather?.sunrise)),
               InfoItem(
                   title: 'Sunset',
                   icon: Icon(
                     Icons.brightness_medium,
                     color: Color(0xFFEC6E4C),
                   ),
-                  value: _formatTime(weather?.sunset)),
+                  value: formatTime(weather?.sunset)),
               InfoItem(
                   title: 'Humidity',
                   icon: Icon(
@@ -53,12 +53,5 @@ class InfoList extends StatelessWidget {
             ],
           ),
         ));
-  }
-
-  String _formatTime(DateTime dt) {
-    if (dt != null) {
-      return DateFormat('Hm').format(dt).toString();
-    }
-    return '';
   }
 }

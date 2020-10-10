@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_weather_app/core/model/city.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter_weather_app/core/viewmodel/home_view_model.dart';
+import 'package:flutter_weather_app/core/utils/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
@@ -37,7 +38,7 @@ class CityList extends StatelessWidget {
                       autoPlay: false,
                       onPageChanged: (index, reason) {
                         homeViewModel.selectedCity = cities[index];
-                        homeViewModel.getCurrentWeather();
+                        homeViewModel.getWeatherAndForecast();
                       }),
                 );
               })),
@@ -97,7 +98,7 @@ class CityList extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                '${weather?.temperature?.toStringAsFixed(0) ?? ''}°',
+                formatTemperature(weather?.temperature),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 70.0,

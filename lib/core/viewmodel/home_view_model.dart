@@ -4,6 +4,7 @@ import 'package:flutter_weather_app/core/model/city.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter_weather_app/core/service/locator/locator.dart';
 import 'package:flutter_weather_app/core/service/service.dart';
+import 'package:flutter_weather_app/core/utils/utils.dart';
 
 import 'base_model.dart';
 
@@ -28,12 +29,15 @@ class HomeViewModel extends BaseModel {
   Weather _currentWeather;
   Weather get currentWeather => _currentWeather;
 
+  List<Weather> _currentForecast;
+  List<Weather> get currentForecast => _currentForecast;
+
   ForecastResponse _forecastResponse;
   ForecastResponse get forecastResponse => _forecastResponse;
 
   Future<void> setupPage() async {
     await getUserCities();
-    await getCurrentWeather();
+    await getWeatherAndForecast();
   }
 
   Future<void> getUserCities() async {
@@ -48,13 +52,19 @@ class HomeViewModel extends BaseModel {
     setViewState(ViewState.idle);
   }
 
-  Future<void> getCurrentWeather() async {
+  Future<void> getWeatherAndForecast() async {
     setViewState(ViewState.busy);
     try {
       final wr = await _service.getCurrentWeather(
           lat: _selectedCity.latitude, lng: _selectedCity.longitude);
       _currentWeather = wr.weather;
       print(_currentWeather.toString());
+      _forecastResponse = await _service.getForecast(
+          lat: _selectedCity.latitude, lng: _selectedCity.longitude);
+      _currentForecast = _forecastResponse.weathers
+          .where((element) =>
+              isSameDay(element.dateTime, _currentWeather.dateTime))
+          .toList();
       setViewState(ViewState.idle);
     } catch (e) {
       print(e.toString());

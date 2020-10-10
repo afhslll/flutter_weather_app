@@ -47,7 +47,6 @@ class WeatherResponse {
 class ForecastResponse {
   List<Weather> weathers;
   ForecastResponse({this.weathers});
-
   ForecastResponse.fromJson(List<dynamic> json) {
     weathers = json
         ?.map((e) => e == null

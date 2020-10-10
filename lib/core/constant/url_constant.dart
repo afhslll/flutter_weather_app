@@ -8,4 +8,6 @@ class ConstantUrl {
       '$baseUrl/weather?lat=$lat&lon=$lng&units=metric&appid=$appId';
   static String getForecastUrl(double lat, double lng) =>
       '$baseUrl/forecast?lat=$lat&lon=$lng&units=metric&appid=$appId';
+  static String getIconUrl(String icon) =>
+      'http://openweathermap.org/img/wn/$icon@2x.png';
 }

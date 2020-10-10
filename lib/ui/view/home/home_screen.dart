@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter_weather_app/core/router/router.dart';
 import 'package:flutter_weather_app/core/service/locator/locator.dart';
 import 'package:flutter_weather_app/core/service/navigator/navigation_service.dart';
 import 'package:flutter_weather_app/core/viewmodel/home_view_model.dart';
 import 'package:flutter_weather_app/ui/widget/weather_list.dart';
+import 'package:provider/provider.dart';
 import '../base_view.dart';
 import 'city_list.dart';
 import 'info_list.dart';
@@ -56,7 +58,13 @@ class HomeScreen extends StatelessWidget {
                               .navigateTo(NavigationRouter.weatherDetailRoute);
                         },
                       ),
-                      WeatherList(),
+                      Selector<HomeViewModel, List<Weather>>(
+                        selector: (context, viewModel) =>
+                            viewModel.currentForecast,
+                        builder: (context, forecast, child) => WeatherList(
+                          weathers: forecast ?? [],
+                        ),
+                      ),
                       SizedBox(
                         height: 10,
                       )

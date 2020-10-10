@@ -30,7 +30,9 @@ class WeatherDetailScreen extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        WeatherList(),
+        WeatherList(
+          weathers: const [],
+        ),
       ],
     );
   }
