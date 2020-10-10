@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/core/enum/view_state.dart';
+import 'package:flutter_weather_app/core/model/city.dart';
 import 'package:flutter_weather_app/core/viewmodel/add_city_view_model.dart';
+import 'package:provider/provider.dart';
 import '../base_view.dart';
 
 class AddCityScreen extends StatelessWidget {
@@ -8,14 +11,31 @@ class AddCityScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<AddCityViewModel>(
+        onModelReady: (viewModel) async {
+          await viewModel.getAvailableCities();
+        },
         builder: (context, viewModel, child) => Scaffold(
               appBar: AppBar(
                 title: Text('Add City'),
               ),
-              body: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (ctx, i) =>
-                      i == 0 ? _buildCurrentLocation() : _buildCityItem()),
+              body: ListView(
+                children: [
+                  _buildCurrentLocation(),
+                  Selector<AddCityViewModel, ViewState>(
+                    selector: (context, viewModel) => viewModel.viewState,
+                    builder: (context, viewState, child) =>
+                        viewState == ViewState.busy
+                            ? Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : Column(
+                                children: List.generate(
+                                    viewModel.availableCities.length ?? 0,
+                                    (index) => _buildCityItem(
+                                        viewModel.availableCities[index]))),
+                  )
+                ],
+              ),
             ));
   }
 
@@ -52,7 +72,7 @@ class AddCityScreen extends StatelessWidget {
                 ])));
   }
 
-  Widget _buildCityItem() {
+  Widget _buildCityItem(City city) {
     return GestureDetector(
         onTap: () {},
         child: Container(
@@ -71,7 +91,7 @@ class AddCityScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Text('title',
+                  Text(city?.name ?? '',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0,
@@ -80,7 +100,7 @@ class AddCityScreen extends StatelessWidget {
                     height: 5.0,
                   ),
                   Text(
-                    'subtitle',
+                    city?.state ?? '',
                     style: TextStyle(fontSize: 16.0),
                   )
                 ])));

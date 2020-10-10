@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter_weather_app/core/data/mock_json_data.dart';
 import 'package:flutter_weather_app/core/model/city.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +15,7 @@ abstract class Service {
       {@required double lat, @required double lng});
   Future<int> insertCity({@required City city});
   Future<List<City>> fetchCities();
+  Future<List<City>> fetchMockCities();
 }
 
 class ServiceImpl implements Service {
@@ -38,5 +42,12 @@ class ServiceImpl implements Service {
     final db = await _databaseService.database;
     final result = await db.query(City.table);
     return result.isEmpty ? [] : result.map((e) => City.fromMap(e)).toList();
+  }
+
+  @override
+  Future<List<City>> fetchMockCities() async {
+    final result = await MockJsonProvider.getCitiesMockJson();
+    final cities = json.decode(result) as List<dynamic>;
+    return cities.map((e) => City.fromMockMap(e)).toList();
   }
 }

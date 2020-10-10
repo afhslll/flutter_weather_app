@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_classes_with_only_static_members,constant_identifier_names,prefer_single_quotes
 class MockJsonProvider {
+  static Duration duration = const Duration(seconds: 1);
   static const mock_cities_json = """[
   {    
     "city": "George Town",
@@ -442,4 +443,8 @@ class MockJsonProvider {
     "population": ""
   }
 ]""";
+
+  static Future<String> getCitiesMockJson() {
+    return Future.delayed(duration, () => mock_cities_json);
+  }
 }

@@ -5,6 +5,10 @@ class City {
   static const colState = 'state';
   static const colLatitude = 'latitude';
   static const colLongitude = 'longitude';
+  static const mockName = 'city';
+  static const mockState = 'admin';
+  static const mockLatitude = 'lat';
+  static const mockLongitude = 'lng';
 
   int id;
   String name;
@@ -20,6 +24,13 @@ class City {
     state = map[colState];
     latitude = map[colLatitude];
     longitude = map[colLongitude];
+  }
+
+  City.fromMockMap(Map<String, dynamic> map) {
+    name = map[mockName];
+    state = map[mockState];
+    latitude = double.parse(map[mockLatitude]);
+    longitude = double.parse(map[mockLongitude]);
   }
 
   Map<String, dynamic> toMap() {
