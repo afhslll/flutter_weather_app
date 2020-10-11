@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter_weather_app/core/constant/string_constant.dart';
 import 'package:flutter_weather_app/core/enum/view_state.dart';
 import 'package:flutter_weather_app/core/model/city.dart';
@@ -40,30 +41,35 @@ class HomeViewModel extends BaseModel {
   Map<String, List<Weather>> _dayForecast;
   Map<String, List<Weather>> get dayForecast => _dayForecast;
 
-  Future<void> setupPage() async {
-    await getUserCities();
+  Future<void> setupPage({bool toRefresh = false}) async {
+    await getUserCities(toRefresh);
     await getWeatherAndForecast();
   }
 
-  Future<void> getUserCities() async {
+  Future<void> getUserCities(bool toRefresh) async {
+    print('getUserCities');
     setViewState(ViewState.busy);
     _userCities = await _service.fetchCities();
     if (_userCities.isNotEmpty) {
-      final idx =
-          _userCities.indexWhere((c) => c.name == ConstantString.defaultCity);
-      _selectedCityIndex = idx == -1 ? 0 : idx;
+      if (!toRefresh) {
+        final idx =
+            _userCities.indexWhere((c) => c.name == ConstantString.defaultCity);
+        _selectedCityIndex = idx == -1 ? 0 : idx;
+      } else {
+        _selectedCityIndex = _userCities.length - 1;
+      }
       _selectedCity = _userCities[_selectedCityIndex];
     }
     setViewState(ViewState.idle);
   }
 
   Future<void> getWeatherAndForecast() async {
+    print('getWeatherAndForecast');
     setViewState(ViewState.busy);
     try {
       final wr = await _service.getCurrentWeather(
           lat: _selectedCity.latitude, lng: _selectedCity.longitude);
       _currentWeather = wr.weather;
-      print(_currentWeather.toString());
       _forecastResponse = await _service.getForecast(
           lat: _selectedCity.latitude, lng: _selectedCity.longitude);
       _currentForecast = _forecastResponse.weathers

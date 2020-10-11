@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/core/argument/add_city_argument.dart';
 import 'package:flutter_weather_app/core/argument/weather_detail_argument.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter_weather_app/core/router/router.dart';
@@ -29,7 +30,12 @@ class HomeScreen extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.add),
                 onPressed: () {
-                  _navigationService.navigateTo(NavigationRouter.addCityRoute);
+                  _navigationService.navigateTo(
+                    NavigationRouter.addCityRoute,
+                    arguments: AddCityArgument(
+                      homeViewModel: viewModel,
+                    ),
+                  );
                 },
                 iconSize: 30.0,
               ),

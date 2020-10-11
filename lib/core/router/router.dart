@@ -17,7 +17,9 @@ class NavigationRouter {
       case homeRoute:
         return _pageRoute(HomeScreen());
       case addCityRoute:
-        return _pageRoute(AddCityScreen());
+        return _pageRoute(AddCityScreen(
+          arguments: settings.arguments,
+        ));
       case weatherDetailRoute:
         return _pageRoute(WeatherDetailScreen(
           arguments: settings.arguments,

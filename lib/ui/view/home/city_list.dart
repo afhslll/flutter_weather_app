@@ -26,6 +26,7 @@ class CityList extends StatelessWidget {
                   return Container();
                 }
                 return CarouselSlider.builder(
+                  key: UniqueKey(),
                   itemCount: cities.length,
                   itemBuilder: (context, index) {
                     return _buildCarouselItem(city: cities[index]);
