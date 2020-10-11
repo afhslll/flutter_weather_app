@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter_weather_app/core/constant/string_constant.dart';
 import 'package:flutter_weather_app/core/enum/view_state.dart';
 import 'package:flutter_weather_app/core/model/city.dart';
