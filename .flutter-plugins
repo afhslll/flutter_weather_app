@@ -1,9 +1,17 @@
 # This is a generated file; do not edit or check into version control.
-location=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/location-3.0.2/
-location_web=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/location_web-1.0.0/
+geocoding=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/geocoding-1.0.4+1/
+geolocator=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-6.0.0+4/
+path_provider=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.18/
 path_provider_linux=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2/
+path_provider_macos=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+4/
+path_provider_windows=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.4+1/
 shared_preferences=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.8/
 shared_preferences_linux=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-0.0.2+1/
 shared_preferences_macos=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+10/
 shared_preferences_web=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+7/
 sqflite=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.3.0+1/
+url_launcher=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.7.2/
+url_launcher_linux=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_linux-0.0.1+1/
+url_launcher_macos=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_macos-0.0.1+8/
+url_launcher_web=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_web-0.1.4+1/
+url_launcher_windows=/Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_windows-0.0.1+1/
