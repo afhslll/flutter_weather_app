@@ -92,6 +92,30 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "geocoding",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/geocoding-1.0.4+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "geocoding_platform_interface",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/geocoding_platform_interface-1.0.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "geolocator",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-6.0.0+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "geolocator_platform_interface",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator_platform_interface-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "get_it",
       "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-5.0.1",
       "packageUri": "lib/",
@@ -114,30 +138,6 @@
       "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1",
       "packageUri": "lib/",
       "languageVersion": "2.5"
-    },
-    {
-      "name": "js",
-      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.1+1",
-      "packageUri": "lib/",
-      "languageVersion": "1.19"
-    },
-    {
-      "name": "location",
-      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/location-3.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.0"
-    },
-    {
-      "name": "location_platform_interface",
-      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/location_platform_interface-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.4"
-    },
-    {
-      "name": "location_web",
-      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/location_web-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.1"
     },
     {
       "name": "matcher",
@@ -332,6 +332,42 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "url_launcher",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.7.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "url_launcher_linux",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_linux-0.0.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "url_launcher_macos",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_macos-0.0.1+8",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "url_launcher_platform_interface",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_platform_interface-1.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "url_launcher_web",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_web-0.1.4+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
+      "name": "url_launcher_windows",
+      "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_windows-0.0.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///Users/afifahsalimi/Development/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0-nullsafety.3",
       "packageUri": "lib/",
@@ -356,7 +392,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-10-10T09:01:24.416930Z",
+  "generated": "2020-10-12T05:26:41.639014Z",
   "generator": "pub",
   "generatorVersion": "2.10.0"
 }

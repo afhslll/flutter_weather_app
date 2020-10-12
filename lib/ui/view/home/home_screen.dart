@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/core/argument/add_city_argument.dart';
 import 'package:flutter_weather_app/core/argument/weather_detail_argument.dart';
+import 'package:flutter_weather_app/core/enum/view_state.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter_weather_app/core/router/router.dart';
 import 'package:flutter_weather_app/core/service/locator/locator.dart';
@@ -18,8 +19,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<HomeViewModel>(
-      onModelReady: (viewModel) {
-        viewModel.setupPage();
+      onModelReady: (viewModel) async {
+        await viewModel.setupPage();
+        if (viewModel.viewState == ViewState.error) {
+          handleError(context: context, viewModel: viewModel);
+        }
       },
       builder: (context, viewModel, child) => Scaffold(
           extendBodyBehindAppBar: true,
@@ -48,38 +52,66 @@ class HomeScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: SafeArea(
-                  top: false,
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 80,
-                      ),
-                      CityList(
-                        homeViewModel: viewModel,
-                      ),
-                      InfoList(),
-                      TabList(
-                        onTap: () {
-                          _navigationService.navigateTo(
-                            NavigationRouter.weatherDetailRoute,
-                            arguments: WeatherDetailArgument(
-                                dayForecast: viewModel.dayForecast),
-                          );
-                        },
-                      ),
-                      Selector<HomeViewModel, List<Weather>>(
-                        selector: (context, viewModel) =>
-                            viewModel.currentForecast,
-                        builder: (context, forecast, child) => WeatherList(
-                          weathers: forecast ?? [],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      )
-                    ],
-                  )))),
+              child: _buildContent(viewModel: viewModel))),
+    );
+  }
+
+  Widget _buildContent({HomeViewModel viewModel}) {
+    return SafeArea(
+        top: false,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 80,
+            ),
+            CityList(
+              homeViewModel: viewModel,
+            ),
+            InfoList(),
+            TabList(
+              onTap: () {
+                _navigationService.navigateTo(
+                  NavigationRouter.weatherDetailRoute,
+                  arguments:
+                      WeatherDetailArgument(dayForecast: viewModel.dayForecast),
+                );
+              },
+            ),
+            Selector<HomeViewModel, List<Weather>>(
+              selector: (context, viewModel) => viewModel.currentForecast,
+              builder: (context, forecast, child) => WeatherList(
+                weathers: forecast ?? [],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            )
+          ],
+        ));
+  }
+
+  void handleError({BuildContext context, HomeViewModel viewModel}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text(
+              'An error occured while retrieving current weather. Please try again.'),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: () async {
+                await viewModel.setupPage();
+                _navigationService.pop();
+                if (viewModel.viewState == ViewState.error) {
+                  handleError(context: context, viewModel: viewModel);
+                }
+              },
+              child: Text('Retry'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -3,10 +3,26 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" group="android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1611557575/android-sqflite.iml" filepath="$PROJECT_DIR$/.idea/modules/-1611557575/android-sqflite.iml" group="android/sqflite" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1450197569/geocoding.iml" filepath="$PROJECT_DIR$/.idea/modules/-1450197569/geocoding.iml" group="android/geocoding" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-314623799/geolocator.iml" filepath="$PROJECT_DIR$/.idea/modules/-314623799/geolocator.iml" group="android/geolocator" />
       <module fileurl="file://$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/location-3.0.2/android/location.iml" filepath="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/location-3.0.2/android/location.iml" group="android/location" />
       <module fileurl="file://$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/location_web-1.0.0/android/location_web.iml" filepath="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/location_web-1.0.0/android/location_web.iml" group="android/location_web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1850343052/path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/1850343052/path_provider.iml" group="android/path_provider" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1287244865/path_provider_linux.iml" filepath="$PROJECT_DIR$/.idea/modules/1287244865/path_provider_linux.iml" group="android/path_provider_linux" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-26464507/path_provider_macos.iml" filepath="$PROJECT_DIR$/.idea/modules/-26464507/path_provider_macos.iml" group="android/path_provider_macos" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/600123794/path_provider_windows.iml" filepath="$PROJECT_DIR$/.idea/modules/600123794/path_provider_windows.iml" group="android/path_provider_windows" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/521854816/shared_preferences.iml" filepath="$PROJECT_DIR$/.idea/modules/521854816/shared_preferences.iml" group="android/shared_preferences" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2001305264/shared_preferences_linux.iml" filepath="$PROJECT_DIR$/.idea/modules/2001305264/shared_preferences_linux.iml" group="android/shared_preferences_linux" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1710481342/shared_preferences_macos.iml" filepath="$PROJECT_DIR$/.idea/modules/-1710481342/shared_preferences_macos.iml" group="android/shared_preferences_macos" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/386676951/shared_preferences_web.iml" filepath="$PROJECT_DIR$/.idea/modules/386676951/shared_preferences_web.iml" group="android/shared_preferences_web" />
       <module fileurl="file://$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.3.0+1/android/sqflite.iml" filepath="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.3.0+1/android/sqflite.iml" group="android/sqflite" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/907111603/url_launcher.iml" filepath="$PROJECT_DIR$/.idea/modules/907111603/url_launcher.iml" group="android/url_launcher" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1884814145/url_launcher_linux.iml" filepath="$PROJECT_DIR$/.idea/modules/1884814145/url_launcher_linux.iml" group="android/url_launcher_linux" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1219653831/url_launcher_macos.iml" filepath="$PROJECT_DIR$/.idea/modules/1219653831/url_launcher_macos.iml" group="android/url_launcher_macos" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1200234459/url_launcher_web.iml" filepath="$PROJECT_DIR$/.idea/modules/-1200234459/url_launcher_web.iml" group="android/url_launcher_web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1362480368/url_launcher_windows.iml" filepath="$PROJECT_DIR$/.idea/modules/-1362480368/url_launcher_windows.iml" group="android/url_launcher_windows" />
     </modules>
   </component>
 </project>

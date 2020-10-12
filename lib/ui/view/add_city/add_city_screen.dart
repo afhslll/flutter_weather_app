@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/core/argument/add_city_argument.dart';
-import 'package:flutter_weather_app/core/enum/view_state.dart';
+import 'package:flutter_weather_app/core/enum/add_city_view_state.dart';
 import 'package:flutter_weather_app/core/model/city.dart';
+import 'package:flutter_weather_app/core/service/locator/locator.dart';
+import 'package:flutter_weather_app/core/service/navigator/navigation_service.dart';
 import 'package:flutter_weather_app/core/viewmodel/add_city_view_model.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import '../base_view.dart';
 
 class AddCityScreen extends StatelessWidget {
   final AddCityArgument arguments;
-  const AddCityScreen({@required this.arguments, Key key}) : super(key: key);
-
+  AddCityScreen({@required this.arguments, Key key}) : super(key: key);
+  final NavigationService _navigationService = locator<NavigationService>();
   @override
   Widget build(BuildContext context) {
     return BaseView<AddCityViewModel>(
@@ -23,11 +26,12 @@ class AddCityScreen extends StatelessWidget {
               ),
               body: ListView(
                 children: [
-                  _buildCurrentLocation(),
-                  Selector<AddCityViewModel, ViewState>(
-                    selector: (context, viewModel) => viewModel.viewState,
+                  _buildCurrentLocation(context: context, viewModel: viewModel),
+                  Selector<AddCityViewModel, AddCityViewState>(
+                    selector: (context, viewModel) =>
+                        viewModel.addCityViewState,
                     builder: (context, viewState, child) => viewState ==
-                            ViewState.busy
+                            AddCityViewState.busy
                         ? Center(
                             child: Padding(
                             padding: const EdgeInsets.only(top: 16),
@@ -46,9 +50,15 @@ class AddCityScreen extends StatelessWidget {
             ));
   }
 
-  Widget _buildCurrentLocation() {
+  Widget _buildCurrentLocation(
+      {BuildContext context, AddCityViewModel viewModel}) {
     return GestureDetector(
-        onTap: () {},
+        onTap: () async {
+          await viewModel.addSavedCurrentCity();
+          if (viewModel.addCityViewState == AddCityViewState.error) {
+            handleError(context: context);
+          }
+        },
         child: Container(
             margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
             padding: EdgeInsets.all(17.0),
@@ -113,5 +123,33 @@ class AddCityScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 16.0),
                   )
                 ])));
+  }
+
+  void handleError({BuildContext context}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text(
+              'An error occured while getting your current location. Please check your settings.'),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: () {
+                openLocationSettings();
+                _navigationService.pop();
+              },
+              child: Text('Ok'),
+            ),
+            FlatButton(
+              onPressed: () async {
+                _navigationService.pop();
+              },
+              child: Text('Cancel'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

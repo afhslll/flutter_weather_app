@@ -9,10 +9,13 @@ class APIRequest {
 
   Future<dynamic> get(String endpoint, {bool checkToken = true}) async {
     try {
+      print('api $endpoint');
       final Response response = await _client.get(
         endpoint,
       );
       return await _toJson(response.body);
+    } on SocketException {
+      throw InternetException();
     } catch (e) {
       final checkConnectivity = await checkInternet();
       if (checkConnectivity == null || !checkConnectivity) {
@@ -28,6 +31,7 @@ class APIRequest {
   Future<dynamic> post(String endpoint,
       {Map<String, dynamic> body, bool checkToken = true}) async {
     try {
+      print('api $endpoint');
       final Response response = await _client.post(
         endpoint,
         body: json.encode(body),

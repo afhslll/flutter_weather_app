@@ -62,61 +62,54 @@ class CityList extends StatelessWidget {
       padding: EdgeInsets.all(12.0),
       child: Selector<HomeViewModel, Weather>(
         selector: (context, viewModel) => viewModel.currentWeather,
-        builder: (context, weather, child) => Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Icon(
-                    Icons.gps_fixed,
-                    size: 24.0,
+        builder: (context, weather, child) => Container(
+          width: double.infinity,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  city?.name ?? '',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
                   ),
-                  SizedBox(
-                    width: 10.0,
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  _formatDateTime(weather?.dateTime),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
                   ),
-                  Text(
-                    city?.name ?? '',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                Text(
+                  formatTemperature(weather?.temperature),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 70.0,
+                    fontWeight: FontWeight.bold,
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                _formatDateTime(weather?.dateTime),
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
                 ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                formatTemperature(weather?.temperature),
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 70.0,
-                  fontWeight: FontWeight.bold,
+                SizedBox(
+                  height: 12,
                 ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                weather?.description ?? '',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
+                Text(
+                  weather?.description ?? '',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                  ),
                 ),
-              ),
-            ]),
+              ]),
+        ),
       ),
     );
   }

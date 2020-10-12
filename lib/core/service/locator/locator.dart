@@ -1,4 +1,5 @@
 import 'package:flutter_weather_app/core/service/database/database_service.dart';
+import 'package:flutter_weather_app/core/service/location/location_service.dart';
 import 'package:flutter_weather_app/core/service/network/network_service.dart';
 import 'package:flutter_weather_app/core/service/network/network_util.dart';
 import 'package:flutter_weather_app/core/service/navigator/navigation_service.dart';
@@ -16,6 +17,7 @@ void setupLocator() {
   locator.registerLazySingleton(() => APIRequest());
   locator.registerLazySingleton(() => NetworkServiceImpl());
   locator.registerLazySingleton(() => DatabaseService());
+  locator.registerLazySingleton(() => LocationServiceImpl());
   locator.registerLazySingleton(() => ServiceImpl());
 
   locator.registerFactory(() => HomeViewModel());

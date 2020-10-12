@@ -46,7 +46,6 @@ class HomeViewModel extends BaseModel {
   }
 
   Future<void> getUserCities(bool toRefresh) async {
-    print('getUserCities');
     setViewState(ViewState.busy);
     _userCities = await _service.fetchCities();
     if (_userCities.isNotEmpty) {
@@ -63,7 +62,6 @@ class HomeViewModel extends BaseModel {
   }
 
   Future<void> getWeatherAndForecast() async {
-    print('getWeatherAndForecast');
     setViewState(ViewState.busy);
     try {
       final wr = await _service.getCurrentWeather(

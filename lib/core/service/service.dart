@@ -1,11 +1,11 @@
 import 'dart:convert';
-
 import 'package:flutter_weather_app/core/data/mock_json_data.dart';
 import 'package:flutter_weather_app/core/model/city.dart';
 import 'package:flutter_weather_app/core/model/forecast.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/core/service/database/database_service.dart';
+import 'package:flutter_weather_app/core/service/location/location_service.dart';
 import 'package:flutter_weather_app/core/service/locator/locator.dart';
 import 'package:flutter_weather_app/core/service/network/network_service.dart';
 
@@ -17,11 +17,13 @@ abstract class Service {
   Future<int> insertCity({@required City city});
   Future<List<City>> fetchCities();
   Future<List<City>> fetchMockCities();
+  Future<City> getCurrentLocation();
 }
 
 class ServiceImpl implements Service {
   final NetworkService _networkService = locator<NetworkServiceImpl>();
   final DatabaseService _databaseService = locator<DatabaseService>();
+  final LocationService _locationService = locator<LocationServiceImpl>();
   @override
   Future<WeatherResponse> getCurrentWeather({double lat, double lng}) async {
     return await _networkService.getCurrentWeather(lat: lat, lng: lng);
@@ -50,5 +52,10 @@ class ServiceImpl implements Service {
     final result = await MockJsonProvider.getCitiesMockJson();
     final cities = json.decode(result) as List<dynamic>;
     return cities.map((e) => City.fromMockMap(e)).toList();
+  }
+
+  @override
+  Future<City> getCurrentLocation() async {
+    return await _locationService.getCurrentLocation();
   }
 }
