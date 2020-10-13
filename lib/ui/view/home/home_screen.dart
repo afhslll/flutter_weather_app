@@ -7,6 +7,7 @@ import 'package:flutter_weather_app/core/router/router.dart';
 import 'package:flutter_weather_app/core/service/locator/locator.dart';
 import 'package:flutter_weather_app/core/service/navigator/navigation_service.dart';
 import 'package:flutter_weather_app/core/viewmodel/home_view_model.dart';
+import 'package:flutter_weather_app/ui/view/home/home_background_painter.dart';
 import 'package:flutter_weather_app/ui/widget/weather_list.dart';
 import 'package:provider/provider.dart';
 import '../base_view.dart';
@@ -45,14 +46,12 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          body: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/background.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: _buildContent(viewModel: viewModel))),
+          body: Stack(
+            children: [
+              HomeBackgroundPainter(),
+              _buildContent(viewModel: viewModel),
+            ],
+          )),
     );
   }
 
