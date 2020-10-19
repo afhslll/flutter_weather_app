@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/core/model/weather.dart';
 import 'package:flutter_weather_app/core/utils/utils.dart';
 import 'package:flutter_weather_app/core/viewmodel/home_view_model.dart';
+import 'package:flutter_weather_app/ui/shared/theme_color.dart';
 import 'package:provider/provider.dart';
 import 'info_item.dart';
 
@@ -11,7 +12,7 @@ class InfoList extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(14.0)),
-            color: Color(0xFFFCBF49)),
+            color: ThemeColor.softOrange),
         margin: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
         padding: EdgeInsets.all(8.0),
         width: double.infinity,

@@ -17,3 +17,16 @@ String formatTemperature(double temp) {
   }
   return '';
 }
+
+double getHeightMultiplier(double height) {
+  if (height > 895) {
+    return 2;
+  } else if (height > 811 && height < 896) {
+    return 1.7;
+  } else if (height > 735 && height < 812) {
+    return 1.5;
+  } else if (height > 666 && height < 736) {
+    return 1.3;
+  }
+  return 1;
+}
